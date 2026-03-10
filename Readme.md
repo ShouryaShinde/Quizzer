@@ -5,7 +5,7 @@
 ![EJS](https://img.shields.io/badge/EJS-4B32C3?style=for-the-badge)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![NVIDIA AI](https://img.shields.io/badge/NVIDIA%20AI-Llama--3-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
-![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Render](https://img.shields.io/badge/Deployed%20on-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
 Quizzer is an **AI-powered web app** that helps learners summarize educational videos and automatically generate **interactive quizzes** to test understanding — making learning more efficient and engaging.
@@ -15,7 +15,7 @@ Quizzer is an **AI-powered web app** that helps learners summarize educational v
 
 🚀 Experience **Quizzer** live here:
 
-🔗 https://quizzer-w3m3.onrender.com
+🔗 [https://quizzer-w3m3.onrender.com](https://quizzer-7t6k.onrender.com)
 
 ---
 
@@ -145,7 +145,7 @@ or
 
 Live site:
 
-🔗 https://quizzer-w3m3.onrender.com
+🔗 [https://quizzer-w3m3.onrender.com](https://quizzer-7t6k.onrender.com)
 
 ---
 
