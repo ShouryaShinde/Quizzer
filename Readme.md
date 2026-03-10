@@ -4,36 +4,42 @@
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![EJS](https://img.shields.io/badge/EJS-4B32C3?style=for-the-badge)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
-![Render](https://img.shields.io/badge/Deployed%20on-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)
+![NVIDIA AI](https://img.shields.io/badge/NVIDIA%20AI-Llama--3-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
+![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
 Quizzer is an **AI-powered web app** that helps learners summarize educational videos and automatically generate **interactive quizzes** to test understanding — making learning more efficient and engaging.
 
 ---
-## 🌍 Visit the Live Site
+# 🌍 Visit the Live Site
 
-🚀 Experience **Quizzer** live here:  
-🔗 **[https://quizzer-w3m3.onrender.com](https://quizzer-w3m3.onrender.com/)**    
+🚀 Experience **Quizzer** live here:
 
----
-
-## 🚀 Features
-
-✅ **Video Upload & Transcription** — Upload any educational video and let the app generate accurate transcriptions using AI.  
-✅ **Smart Summarization** — Automatically summarize the key concepts and main points from the video content.  
-✅ **Auto Quiz Generation** — Generate context-based multiple-choice quizzes to reinforce learning.  
-✅ **Modern UI** — Simple, responsive, and user-friendly design for effortless interaction.  
-✅ **AI-Powered** — Uses advanced natural language models for high-quality summaries and questions.
+🔗 https://quizzer-w3m3.onrender.com
 
 ---
 
-## 🧩 Tech Stack
+# 🚀 Features
+
+✅ **Audio Upload & Transcription** — Upload lecture audio in **MP3 format** and automatically convert speech into text.
+
+✅ **AI-Powered Summarization** — Extract key ideas and main concepts from lecture transcripts.
+
+✅ **Automatic Quiz Generation** — Generate multiple-choice questions to test understanding.
+
+✅ **Interactive Learning Experience** — Transform lecture recordings into structured study material instantly.
+
+✅ **Modern UI** — Clean and responsive interface for smooth user interaction.
+
+---
+
+# 🧩 Tech Stack
 
 | Layer | Technologies |
-|:------|:--------------|
+|------|-------------|
 | **Frontend** | EJS / HTML / CSS / JavaScript / Bootstrap / TailwindCSS |
 | **Backend** | Node.js / Express.js |
-| **AI APIs** | Gemini API  / AssemblyAI (for transcription and summarization) |
+| **AI APIs** | NVIDIA Llama-3 API (via NVIDIA Build) / AssemblyAI |
 | **Deployment** | Render |
 
 ---
@@ -64,8 +70,8 @@ Quizzer/
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/ShouryaShinde/VORTEXA2.0-Team_Spectre.git
-cd VORTEXA2.0-Team_Spectre
+git clone https://github.com/ShouryaShinde/Quizzer
+cd Quizzer
 ```
 ### 2️⃣ Install dependencies
 ```bash
@@ -74,80 +80,100 @@ npm install
 ### 3️⃣ Set up environment variables
 Create a .env file in the root directory and add the following:
 ```env
-GEMINI_API_KEY=your_gemini_api_key
+NVIDIA=your_nvidia_api_key
 ASSEMBLY_API_KEY=your_assemblyai_api_key
+PORT=your_port_number
 ```
 ### 4️⃣ Run the app
 ```bash
 npm start
 ```
-Then open your browser and visit → <http://localhost:3000/>
+Then open your browser and visit → <http://localhost:5173/>
 
 ---
 
-## 🧠 How It Works
-
-1. **Upload Video** 🎬  
-   Upload an educational video or lecture through the upload page.
-
-2. **AI Transcription** ✍️  
-   The backend uses **AssemblyAI** (or a similar API) to convert speech into accurate text.
-
-3. **Summarization** 🪄  
-   The transcribed text is processed using **Gemini/OpenAI** to create concise and well-structured summaries.
-
-4. **Quiz Generation** 📝  
-   Based on the summarized content, the AI dynamically generates multiple-choice questions to help users test their understanding.
 
 ---
 
-## ⚡ Hackathon Details
+# 🧠 How It Works
 
-This project was built during the **12-hour VORTEXA Hackathon** held on **24th September**.
+### 1️⃣ Upload Lecture Audio 🎧
+
+Users upload lecture recordings in **MP3 format** through the upload interface.
+
+---
+
+### 2️⃣ Speech-to-Text Transcription ✍️
+
+The backend uses **AssemblyAI** to convert lecture audio into accurate text transcripts.
+
+---
+
+### 3️⃣ AI Summarization 🪄
+
+The transcript is processed using **NVIDIA Llama-3 API** to generate concise summaries.
+
+---
+
+### 4️⃣ Quiz Generation 📝
+
+Based on the summarized content, the AI generates **multiple-choice quiz questions** to reinforce learning.
+
+---
+
+# ⚡ Hackathon Details
+
+This project was built during the **12-hour VORTEXA Hackathon** held on **24 September**.
 
 ### 🧩 Problem Statement
-> **"Web App that auto transcribes lectures, summarizes content, and creates adaptive quizzes."**
 
-**Quizzer** was designed as an innovative AI-based solution to help learners and educators save time by automatically processing lecture content into easy-to-understand summaries and adaptive quizzes.
+> "Build a web application that automatically transcribes lectures, summarizes educational content, and generates quizzes to enhance learning."
 
----
-
-## 🌐 Deployment
-
-The project is deployed using **Render**.  
-Once deployed, your app will remain live even if you close the Render dashboard.
-
-### 🪄 Redeploying
-If you make any changes or commits after deployment:
-- Either **enable automatic deploys** in Render’s settings,  
-- Or **redeploy manually** from the Render dashboard.
-
-Your live site: 
-
-🔗 **[https://quizzer-w3m3.onrender.com](https://quizzer-w3m3.onrender.com/)**
+Quizzer solves this problem by converting lecture audio into structured learning material using AI.
 
 ---
 
-## 🧑‍💻 Contributors
+# 🌐 Deployment
+
+The application is deployed using **Render**.
+
+If you push new commits to the repository, you can:
+
+• Enable **automatic deploys**  
+or  
+• Trigger **manual redeploy** from the Render dashboard.
+
+Live site:
+
+🔗 https://quizzer-w3m3.onrender.com
+
+---
+
+# 🧑‍💻 Contributors
 
 | Name | Role |
-|:------|:-----|
-| [Shourya Shinde](https://github.com/ShouryaShinde) | Full Stack Developer |
-| [Ranjit Bhogil](https://github.com/CodeXSpecter) | Full Stack Developer |
-| [Raj Bhokare](https://github.com/RajBhokare) | Front-End Developer |
-| [Vedant Toke](https://github.com/vedanttoke20) | Front-End Developer |
-| **Team Spectre** | Design, Concept & Development |
----
-
-## 🛡️ License
-
-This project is licensed under the **MIT License**.  
-You are free to use, modify, and distribute it for educational or personal projects.
+|----|----|
+| Shourya Shinde | Full Stack Developer |
+| Ranjit Bhogil | Full Stack Developer |
+| Raj Bhokare | Front-End Developer |
+| Vedant Toke | Front-End Developer |
+| **Team Spectre** | Concept, Design & Development |
 
 ---
 
-## ⭐ Show Your Support
+# 🛡️ License
 
-If you found **Quizzer** helpful, please ⭐ star the repo and share it with others!
+This project is licensed under the **MIT License**.
 
-> “Transform learning through AI — one quiz at a time.” 🧩
+You are free to use, modify, and distribute it for educational or personal purposes.
+
+---
+
+# ⭐ Show Your Support
+
+If you found **Quizzer** helpful:
+
+⭐ Star the repository  
+📢 Share it with others
+
+> *Transform learning through AI — one quiz at a time.* 🧩

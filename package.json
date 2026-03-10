@@ -8,9 +8,10 @@
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "form-data": "^4.0.4",
-    "multer": "^2.0.2"
+    "multer": "^2.0.2",
+    "openai": "^6.27.0"
   },
   "scripts": {
-  "start": "node app.js"
+    "start": "node app.js"
   }
 }

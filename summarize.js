@@ -1,68 +1,97 @@
-// summarize.js
 import express from "express";
 import 'dotenv/config';
-import { GoogleGenAI } from "@google/genai";
+import OpenAI from "openai";
 
 const router = express.Router();
-const ai = new GoogleGenAI({});
 
-// Function to generate summary + quiz from text
-async function generateFromGemini(transcriptText) {
+const openai = new OpenAI({
+  apiKey: process.env.NVIDIA_API_KEY,
+  baseURL: "https://integrate.api.nvidia.com/v1"
+});
+
+// Generate summary + quiz using NVIDIA Llama
+async function generateFromNvidia(transcriptText) {
+
   const prompt = `
-    ${transcriptText}
-    Create a summary and send it back in 'summary',
-    create questions based on the summary and store them in 'questions' array,
-    create 'options' array with 3 incorrect options and 1 correct option for each question,
-    create 'answers' array which stores the index of the correct answer for each question,
-    return all data in JSON format without markdown.
-  `;
+${transcriptText}
 
-  const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
-    contents: prompt
+Create:
+- summary
+- questions array
+- options array (4 options each)
+- answers array (index of correct option)
+
+Return ONLY valid JSON in this format:
+
+{
+  "summary": "...",
+  "questions": [],
+  "options": [],
+  "answers": []
+}
+`;
+
+  const completion = await openai.chat.completions.create({
+    model: "meta/llama-3.3-70b-instruct",
+    messages: [
+      {
+        role: "user",
+        content: prompt
+      }
+    ],
+    temperature: 0.2,
+    top_p: 0.7,
+    max_tokens: 1024
   });
 
-  // Remove any backticks/markdown formatting
-  let jsonText = response.text.trim();
-  if (jsonText.startsWith("```")) {
-    jsonText = jsonText.replace(/```(json)?/g, "").trim();
-  }
+  let text = completion.choices[0].message.content;
 
-  return JSON.parse(jsonText);
+  text = text.replace(/```json|```/g, "").trim();
+
+  return JSON.parse(text);
 }
 
-// Route to generate summary and quiz from transcript
+
+// Generate summary route
 router.get("/generate", async (req, res) => {
+
   try {
-    // Get text from query param or stored transcript in app.locals
+
     const text = req.query.text || req.app.locals.transcript;
-    if (!text) return res.status(400).send("No text provided for summary generation");
 
-    const data = await generateFromGemini(text);
+    if (!text) {
+      return res.status(400).send("No text provided");
+    }
 
-    // Store in locals for /quiz-generated
+    const data = await generateFromNvidia(text);
+
     req.app.locals.summary = data.summary;
     req.app.locals.questions = data.questions;
     req.app.locals.options = data.options;
     req.app.locals.answers = data.answers;
 
-    // Render summary page
     res.render("transcribe.ejs", { summary: data.summary });
+
   } catch (err) {
+
     console.error(err);
-    res.status(500).send("Error generating content");
+    res.status(500).send("Error generating summary");
+
   }
 });
 
-// Route to show quiz page
+
+// Quiz page
 router.get("/quiz-generated", (req, res) => {
+
   const { questions, options, answers } = req.app.locals;
 
-  if (!questions || !options || !answers) {
-    return res.status(400).send("No quiz data available. First visit /generate");
+  if (!questions) {
+    return res.status(400).send("Generate quiz first");
   }
 
   res.render("quiz.ejs", { questions, options, answers });
+
 });
 
 export default router;
